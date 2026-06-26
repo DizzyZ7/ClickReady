@@ -1,0 +1,82 @@
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #1d2235;
+  background: #f6f7fb;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* { box-sizing: border-box; }
+
+body { min-width: 320px; min-height: 100vh; margin: 0; }
+button { font: inherit; }
+
+.app-shell {
+  width: min(1220px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 72px 0 56px;
+}
+
+.page-heading { margin: 0 0 30px; }
+.eyebrow { margin: 0 0 10px; color: #7a839b; font-size: 11px; font-weight: 800; letter-spacing: .14em; }
+.page-heading h1 { margin: 0; font-size: clamp(31px, 4vw, 48px); letter-spacing: -.045em; line-height: 1.02; }
+.page-heading > p:last-child { margin: 12px 0 0; color: #747c92; font-size: 15px; }
+
+.chart-card {
+  overflow: hidden;
+  border: 1px solid #e8eaf1;
+  border-radius: 22px;
+  background: #fff;
+  box-shadow: 0 18px 48px rgba(38, 45, 82, .06);
+}
+.chart-card__header { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 26px 28px 22px; border-bottom: 1px solid #eff0f5; }
+.chart-card h2 { margin: 0; font-size: 18px; letter-spacing: -.02em; }
+.chart-card h2 + p { margin: 6px 0 0; color: #7f879b; font-size: 13px; }
+.chart-card__actions { display: flex; gap: 10px; }
+.primary-button, .secondary-button { border: 0; border-radius: 10px; cursor: pointer; padding: 10px 14px; font-size: 13px; font-weight: 700; transition: transform .18s ease, box-shadow .18s ease, background .18s ease; }
+.primary-button { background: #2a314b; color: #fff; box-shadow: 0 6px 16px rgba(42, 49, 75, .18); }
+.secondary-button { background: #f4f5f8; color: #434a61; }
+.primary-button:hover, .secondary-button:hover { transform: translateY(-1px); }
+.primary-button:focus-visible, .secondary-button:focus-visible { outline: 3px solid rgba(115, 128, 248, .4); outline-offset: 2px; }
+
+.mixed-chart { padding: 18px 20px 10px; }
+.mixed-chart--empty { min-height: 300px; display: grid; place-items: center; color: #7f879b; }
+.mixed-chart__legend { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; min-height: 24px; padding: 0 10px 8px 46px; color: #697188; font-size: 12px; font-weight: 700; }
+.mixed-chart__legend-item { display: inline-flex; align-items: center; gap: 7px; }
+.mixed-chart__legend-item i { display: inline-block; width: 7px; height: 7px; border-radius: 99px; }
+.mixed-chart__canvas { position: relative; }
+.mixed-chart svg { display: block; width: 100%; height: auto; overflow: visible; touch-action: none; }
+.mixed-chart__grid line { stroke: #eceef4; stroke-width: 1; stroke-dasharray: 3 5; }
+.mixed-chart__grid text, .mixed-chart__x-axis text { fill: #8c93a6; font-size: 12px; font-weight: 600; }
+.mixed-chart__x-axis line { stroke: #dfe2ea; }
+.mixed-chart__area-fill { pointer-events: none; }
+.mixed-chart__area-line { fill: none; stroke: #7380f8; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.mixed-chart__spline-line { fill: none; stroke: #7e57d9; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.mixed-chart__line { fill: none; stroke: #13a6a7; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 8 6; }
+.mixed-chart__bars rect { fill: #f8a955; fill-opacity: .8; transition: fill-opacity .18s ease; }
+.mixed-chart__bars rect:hover { fill-opacity: 1; }
+.mixed-chart__hover line { stroke: #9aa2b9; stroke-width: 1; stroke-dasharray: 3 5; }
+.mixed-chart__hover circle { stroke: #fff; stroke-width: 2.5; }
+.mixed-chart__focus-target { fill: transparent; outline: none; cursor: crosshair; }
+.mixed-chart__focus-target:focus { fill: rgba(115, 128, 248, .04); }
+.mixed-chart__tooltip { position: absolute; z-index: 2; top: 20px; min-width: 172px; transform: translateX(calc(-50% + 12px)); pointer-events: none; border: 1px solid rgba(224, 227, 236, .96); border-radius: 12px; background: rgba(255, 255, 255, .96); padding: 11px 12px; box-shadow: 0 14px 28px rgba(33, 40, 67, .14); backdrop-filter: blur(12px); }
+.mixed-chart__tooltip p { margin: 0 0 8px; color: #555e76; font-size: 12px; font-weight: 800; }
+.mixed-chart__tooltip dl { margin: 0; display: grid; gap: 5px; }
+.mixed-chart__tooltip dl div { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+.mixed-chart__tooltip dt { display: flex; align-items: center; gap: 7px; color: #778096; font-size: 12px; }
+.mixed-chart__tooltip dt i { width: 7px; height: 7px; border-radius: 50%; }
+.mixed-chart__tooltip dd { margin: 0; color: #2b3248; font-size: 12px; font-weight: 800; }
+.mixed-chart--compact svg { max-height: 320px; }
+.implementation-note { max-width: 860px; margin: 18px 0 0; color: #667087; font-size: 13px; line-height: 1.65; }
+.implementation-note p { margin: 0; }
+.implementation-note strong { color: #3d465e; }
+
+@media (max-width: 720px) {
+  .app-shell { width: min(100% - 28px, 1220px); padding-top: 40px; }
+  .chart-card__header { align-items: flex-start; flex-direction: column; padding: 20px 18px 16px; }
+  .chart-card__actions { width: 100%; }
+  .chart-card__actions button { flex: 1; }
+  .mixed-chart { padding: 14px 8px 4px; }
+  .mixed-chart__legend { gap: 12px; padding-left: 44px; }
+  .mixed-chart__tooltip { min-width: 155px; transform: translateX(-50%); }
+}
